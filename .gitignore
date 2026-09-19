@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Publish / installer output
+publish/
+Installer/Output/
+*.exe
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+
+# Logs / temp
+*.log
+*.tmp
+
+# OS
+Thumbs.db
+.DS_Store
