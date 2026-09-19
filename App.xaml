@@ -1,0 +1,75 @@
+<Application
+    x:Class="AnyDeskRehber.WinUI3.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AnyDeskRehber.WinUI3">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:FavoriteVisibilityConverter x:Key="FavoriteVisibilityConverter" />
+            <local:StatusBrushConverter x:Key="StatusBrushConverter" />
+            <local:StatusTextBrushConverter x:Key="StatusTextBrushConverter" />
+            <local:StatusLabelConverter x:Key="StatusLabelConverter" />
+
+            <SolidColorBrush x:Key="PageBackgroundBrush" Color="#111827" />
+            <SolidColorBrush x:Key="CardBackgroundBrush" Color="#1B2433" />
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F3F6FB" />
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="#B7C2D3" />
+            <SolidColorBrush x:Key="MutedBrush" Color="#8290A5" />
+            <SolidColorBrush x:Key="BorderBrush" Color="#2B3749" />
+            <SolidColorBrush x:Key="AccentBrush" Color="#4A90FF" />
+            <SolidColorBrush x:Key="AccentSoftBrush" Color="#1B355A" />
+            <SolidColorBrush x:Key="SidebarBrush" Color="#0B172A" />
+            <SolidColorBrush x:Key="SidebarActiveBrush" Color="#1A3457" />
+            <SolidColorBrush x:Key="ToastBrush" Color="#243247" />
+            <SolidColorBrush x:Key="SidebarTextBrush" Color="#F4F7FC" />
+            <SolidColorBrush x:Key="SidebarMutedBrush" Color="#A9BCD9" />
+            <SolidColorBrush x:Key="SidebarSectionBrush" Color="#7690B4" />
+            <SolidColorBrush x:Key="SidebarDividerBrush" Color="#294567" />
+
+            <Style TargetType="Button" x:Key="SidebarButtonStyle">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="MinWidth" Value="0" />
+                <Setter Property="MinHeight" Value="44" />
+                <Setter Property="Height" Value="44" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="IconButtonStyle">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="MinWidth" Value="40" />
+                <Setter Property="MinHeight" Value="40" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="PrimaryButtonStyle">
+                <Setter Property="Background" Value="{ThemeResource AccentBrush}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="18,10" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+
+            <Style TargetType="Button" x:Key="SubtleButtonStyle">
+                <Setter Property="Background" Value="{ThemeResource AccentSoftBrush}" />
+                <Setter Property="Foreground" Value="{ThemeResource AccentBrush}" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="CornerRadius" Value="9" />
+                <Setter Property="Padding" Value="13,8" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,41 +1,46 @@
-# AnyDesk Rehber
+# AnyDesk Rehber — WinUI 3 Refined
 
-WinUI 3 ile geliştirilmiş, AnyDesk bilgisayarlarını gruplar ve favoriler ile yönetmek ve bağlantı başlatmak için hazırlanmış Windows masaüstü rehber uygulaması.
+Bu sürüm, WinUI 3 prototipinin son UI düzenlemelerini içerir.
 
-> Bu proje bağımsız bir topluluk projesidir; AnyDesk Software GmbH tarafından geliştirilmemiş veya onaylanmamıştır. AnyDesk adı ve markaları ilgili sahiplerine aittir.
+## Bu sürümde
+- Sağ üstteki AR avatarı kaldırıldı; yalnızca tema düğmesi kaldı.
+- Açık/koyu tema gerçek renk paletini değiştirir.
+- Favoriler sayfasının başlık ikonu artık yıldızdır.
+- Arama alanında `Ara...` sola hizalı ve dikey ortalıdır.
+- AnyDesk ID ortalıdır ve kopyalama sonrası minimal toast gösterilir.
+- Sidebar ikonları tek bir 42px sütununda hizalıdır.
+- Grup listesi sidebar'da dinamik olarak oluşur.
+- Yeni bilgisayar ekranında mevcut gruplar ComboBox'tan seçilebilir; `＋ Yeni grup...` ile yeni grup oluşturulabilir.
+- Kartlardaki `Hazır` ifadesi kaldırıldı. Durum artık `Bilinmiyor / Online / Offline` olarak tutulur ve düzenleme ekranından değiştirilebilir.
+- Eski JSON kayıtlarında durum alanı yoksa otomatik olarak `Bilinmiyor` kabul edilir.
 
-## Özellikler
-
-- Bilgisayar adı, AnyDesk ID/alias, grup ve not bilgisiyle kayıt oluşturma
-- Kayıt düzenleme ve onay pencereli silme
-- AnyDesk bağlantısını doğrudan başlatma
-- Favoriler ve arama
-- Kalıcı gruplar; grup boşalsa bile korunur
-- Grup yeniden adlandırma ve grup silme
-- Açık / koyu tema
-- ID kopyalama bildirimi
-- Manuel Bilinmiyor / Online / Offline durum bilgisi
-- Yinelenen AnyDesk ID kontrolü
-- Güvenli JSON kaydı ve otomatik yedek
-- Inno Setup ile Setup.exe oluşturma
-
-## Teknolojiler
-
-- C# / .NET 8
-- WinUI 3
-- Windows App SDK
-- Inno Setup 6
+## Durum mantığı
+Bu uygulamanın yerel JSON rehberi, herhangi bir uzak AnyDesk adresinin online olup olmadığını kendi başına güvenilir biçimde bilemez. Bu nedenle yeşil `Hazır` gibi yanıltıcı bir durum kullanılmaz. Gerçek otomatik uzak durum için ileride AnyDesk'in lisans/management entegrasyonu eklenebilir.
 
 ## Çalıştırma
-
 1. `AnyDeskRehber.WinUI3.sln` dosyasını Visual Studio'da açın.
-2. Platform olarak `x64` seçin.
+2. `x64` ve `Debug` seçin.
 3. F5 ile çalıştırın.
 
-## Veri depolama
+## Veri
+Kayıtlar `%APPDATA%\AnyDeskRehber\address_book.json` altında tutulur.
 
-Kullanıcı verileri `%APPDATA%\AnyDeskRehber` altında tutulur ve Git deposuna dahil edilmez.
+## Setup.exe
 
-## Lisans
+Dağıtım için `Installer\Build-Installer.ps1` scripti self-contained x64 publish üretir ve Inno Setup 6 ile tek bir `AnyDeskRehber_Setup.exe` kurulum dosyasına paketler.
 
-GNU General Public License v3.0 (GPL-3.0).
+## v1.2 güvenlik ve kullanım iyileştirmeleri
+- Kartlara **Sil** butonu eklendi; işlem onay penceresi olmadan gerçekleşmez.
+- Aynı AnyDesk ID/Alias'ın ikinci kez eklenmesi engellendi. Sayısal ID'lerde boşluk ve tire farkları yok sayılır.
+- JSON kayıtları önce geçici dosyaya yazılır, ardından canlı dosya değiştirilir.
+- Her başarılı güncellemede önceki `address_book.json`, `address_book.backup.json` olarak korunur.
+- Ana JSON bozulursa açılışta yedek otomatik denenir.
+- Inno Setup algılama scriptindeki Program Files (x86) yolu düzeltildi ve kullanıcı-bazlı kurulum yolu eklendi.
+
+
+## v1.3 changes
+- Groups are persisted independently in `%APPDATA%\AnyDeskRehber\groups.json`; deleting the last contact no longer deletes the group.
+- Right-click a group to rename or delete it. Deleting a group keeps its computers and makes them ungrouped.
+- Existing v1.2 groups are migrated automatically from contact records.
+- Light theme sidebar/main-area contrast increased.
+- Search placeholder changed to `Bilgisayar ara...`.
